@@ -18,7 +18,7 @@ public class Scraper {
 
         config.openVula(driver);
 
-        config.logIn(driver, "phlbra004", "icui4cubenarsky");
+        config.logIn(driver, "StudentNumber", "Password");
 
         config.goToCSC(driver);
 
