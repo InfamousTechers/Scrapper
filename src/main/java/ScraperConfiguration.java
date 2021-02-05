@@ -10,7 +10,7 @@ import org.openqa.selenium.safari.SafariDriver;
  * @email brandon.m.paahla@gmail.com
  */
 public class ScraperConfiguration {
-    private final String PATH = "/users/brandonpahla/Projects/chromedriver";
+    private final String PATH = "/users/brandonpahla/Projects/InfamousTechers/Scrapper";
     private final String DRIVERPROPERTY = "webdriver.chrome.driver";
 
     public ScraperConfiguration(String URL, String driverPath){
@@ -19,7 +19,7 @@ public class ScraperConfiguration {
     }
 
     public ScraperConfiguration(String URL){
-        System.setProperty(DRIVERPROPERTY, "/users/brandonpahla/Projects/chromedriver");
+        System.setProperty(DRIVERPROPERTY, PATH);
     }
 
     public WebDriver getDriver(String webBrowser){
