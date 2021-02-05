@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 
 
 public class Scraper {
+    private static final String cscXpath = "//*[@id=\"topnav\"]/li[13]/a[2]";
+    private static final String cscAssignmentXpath = "//*[@id=\"toolMenu\"]/ul/li[9]/a";
 
     public static void main(String[] args) {
 
@@ -18,13 +20,13 @@ public class Scraper {
 
         config.openVula(driver);
 
-        config.logIn(driver, "StudentNumber", "Password");
+        config.logIn(driver, "UserName", "Password");
 
-        config.goToCSC(driver);
+        config.goToCSC(driver,cscXpath);
 
-        CompScie csc = config.goToCSC(driver);
+        CompScie csc = config.goToCSC(driver, cscXpath);
 
-        Document document = csc.goToAssignments();
+        Document document = csc.goToAssignments(cscAssignmentXpath);
 
         StaticMethods.getCompScieAssignments(document);// also returns an Hashmap<String, String>
     }

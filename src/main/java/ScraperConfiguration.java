@@ -10,7 +10,7 @@ import org.openqa.selenium.safari.SafariDriver;
  * @email brandon.m.paahla@gmail.com
  */
 public class ScraperConfiguration {
-    private final String PATH = "/users/brandonpahla/Projects/InfamousTechers/Scrapper";
+    private final String PATH = "/users/brandonpahla/Projects/InfamousTechers/Scrapper/chromedriver";
     private final String DRIVERPROPERTY = "webdriver.chrome.driver";
 
     public ScraperConfiguration(String URL, String driverPath){
@@ -45,7 +45,7 @@ public class ScraperConfiguration {
         driver.findElement(By.id("submitButton")).click();
     }
 
-    public CompScie goToCSC(WebDriver dr){
-        return new CompScie(dr);
+    public CompScie goToCSC(WebDriver dr,String Xpath){
+        return new CompScie(dr, Xpath);
     }
 }

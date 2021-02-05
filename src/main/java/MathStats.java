@@ -10,15 +10,15 @@ import java.util.HashMap;
  * @author brandonpahla
  * @email brandon.m.paahla@gmail.com
  */
-public class CompScie extends Course {
+public class MathStats extends Course{
 
-    public CompScie(WebDriver dr, String Xpath) {
+    public MathStats(WebDriver dr, String Xpath) {
         super(dr);
         goToCourse(Xpath);
     }
 
     @Override
-    public Document goToAssignments(String AssignmentsXpath){
+    public Document goToAssignments(String AssignmentsXpath) {
         //Scroll the pane first so that Assignment will be clickable
         JavascriptExecutor js = (JavascriptExecutor) dr;
         WebElement assignmentsTab = dr.findElement(new By.ByXPath(AssignmentsXpath));
@@ -31,24 +31,38 @@ public class CompScie extends Course {
         dr.get(assignmentsURL);
 
         return passContePageToJsoup(dr.getPageSource());
-
     }
 
     @Override
     public HashMap<String, String> getAssignments(String AssignmentsXpath) {
-        return null;
+        this.getAssignments(AssignmentsXpath);
+        HashMap<String, String> assignments = new HashMap<>(0);
+
+        //getAssignments
+
+        return assignments;
+
     }
 
     //test method
     @Override
-    public Document goToAnnouncements(String AnnouncementsXpath) {
-        return null;
+    public Document goToAnnouncements(String announcementsXpath) {
+        //Scroll the pane first so that Assignment will be clickable
+        JavascriptExecutor js = (JavascriptExecutor) dr;
+        WebElement assignmentsTab = dr.findElement(new By.ByXPath(announcementsXpath));
+
+        //scroll until assignmentsTab is found
+        js.executeScript("arguments[0].scrollIntoView();", assignmentsTab);
+
+        //click on it
+        String assignmentsURL = assignmentsTab.getAttribute("href");
+        dr.get(assignmentsURL);
+
+        return passContePageToJsoup(dr.getPageSource());
     }
 
     @Override
     public HashMap<String, String> getAnnouncements(String AnnouncementsXpath) {
-        this.goToAnnouncements(AnnouncementsXpath);
-        //put announcement in a Dictionary [key:Preview, value: from]
         return null;
     }
 
@@ -59,8 +73,6 @@ public class CompScie extends Course {
 
     @Override
     public HashMap<String, String> getUpComingTests(String TestXpath) {
-        this.goToTests(TestXpath);
-        //put upcoming Tests in a Dictionary [key: test, Value: date]
         return null;
     }
 
@@ -71,8 +83,6 @@ public class CompScie extends Course {
 
     @Override
     public HashMap<String, String[]> getMarks(String GradeBookXpath) {
-        this.goToGradeBook(GradeBookXpath);
-        // put marks in a Dictionary [Key: test, Value: marks]
         return null;
     }
 
@@ -80,6 +90,4 @@ public class CompScie extends Course {
     void goToCourse(String courseTabXpath) {
         dr.findElement(new By.ByXPath(courseTabXpath)).click();
     }
-
-
 }
