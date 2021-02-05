@@ -26,7 +26,7 @@ public class Scraper {
 
         Document document = csc.goToAssignments();
 
-        StaticMethods.getCompScieAssignments(document);// also returns an ArrayList<String>
+        StaticMethods.getCompScieAssignments(document);// also returns an Hashmap<String, String>
     }
 
 }
